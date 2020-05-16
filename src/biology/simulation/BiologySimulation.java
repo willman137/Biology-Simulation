@@ -41,17 +41,10 @@ public class BiologySimulation {
        //Splasher.createAndShowGUI();
        
 	   
-       //GUI gui = new GUI();         
-       
-       ArrayList<Organism> orgList = Organism.newMetricTonOfOrganisms(10);
-       BoundedGrid grid = new BoundedGrid(13, 13);
-       world = new ActorWorld();
-       world.setGrid(grid);
-       int q, e = 0, f = 1;
-       /*iterating over alleles and Giving them out at random. 
-        * The key issue is that the alleles are not seperate Objects, and this is only taking in a single string and breaking that down
-        */
-       for(q = 0; q < testAlleles.length; q+=1)
+       //GUI gui = new GUI();
+	   // An easier Solution would be to map Separate count objects to a single gene object when initialized. Versus this... Thing
+       int e = 0, f = 1;
+       for(int q = 0; q < testAlleles.length; q+=1)
        {
            int z = q+1;
            int w = q+2;
@@ -65,6 +58,16 @@ public class BiologySimulation {
            counts[w].name = ""+testAlleles[q].charAt(e)+testAlleles[q].charAt(f);
            GUI.remAppend(counts[w].name);
        }
+       
+       ArrayList<Organism> orgList = Organism.newMetricTonOfOrganisms(10);
+       BoundedGrid grid = new BoundedGrid(13, 13);
+       world = new ActorWorld();
+       world.setGrid(grid);
+
+       /*iterating over alleles and Giving them out at random. 
+        * The key issue is that the alleles are not seperate Objects, and this is only taking in a single string and breaking that down
+        */
+
        for(int n = 0; n < orgList.size(); n++)
 
        {

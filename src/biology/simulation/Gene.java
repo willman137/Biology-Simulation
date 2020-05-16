@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 package biology.simulation;
-import biology.Alleles.Colours.Colour;
+import biology.misc.Count;
 import java.util.*;
-import java.io.*;
+
 /**
  *
  * @author Will
@@ -13,4 +13,5 @@ import java.io.*;
 public interface Gene 
 {
     public String type = "";
+    public Hashtable<String, Count> CountPermutations = null;
 }
