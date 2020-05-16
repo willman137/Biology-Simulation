@@ -11,7 +11,7 @@ package biology.Organisms;
 import biology.simulation.BiologySimulation;
 
 import biology.simulation.GUI;
-
+import biology.simulation.Gene;
 import biology.simulation.Grave;
 
 import info.gridworld.actor.Actor;
@@ -53,8 +53,6 @@ public class Organism extends Bug{
     static int x = 700,y = 450;
     public boolean isCarnivorous, isVegetarian, isOmnivorous, genderLocked, dietLocked;
 
-    public static String [] testAlleles = {"Aa", "Ii", "Nn"};
-    
     private ArrayList<Organism> genes = new ArrayList<>();
 
     public static String[] diets = {"Omnivorous", "Vegetarian", "Carnivorous"}, names = {"Alouette", "Beta", "Gamma", "Rho"}, genders = {"Female", "Male"};
@@ -280,19 +278,27 @@ public class Organism extends Bug{
 
        String[][] alleles = new String[p2][p1];
 
+       //wtf is this doing here?
        double[] prog = {0.0};
 
        return prog;
 
     }
+    
+    //unknow datatype to return at the moment. may require another constructor
+    //The reasoning for using a pundit square is to determine the probability of the genotype sequence occuring, and comparing that to the overall population. 
+    //We can also take this a step further and porgressively update the pundit with the available genes 
+    private static String[][] pundit(ArrayList<Gene> genes) {
+    	return null;
+    }
 
     private void setRandomGenoType() {
 
-       int chromNum = testAlleles.length;
+       int chromNum = BiologySimulation.testAlleles.length;
 
        for (int n = 0; n < chromNum; n++){
 
-           String comp = testAlleles[n];
+           String comp = BiologySimulation.testAlleles[n];
 
           
 
@@ -306,7 +312,7 @@ public class Organism extends Bug{
 
                    indx = 1;
 
-               this.genotype += testAlleles[n].charAt(indx);
+               this.genotype += BiologySimulation.testAlleles[n].charAt(indx);
 
            }
 
@@ -544,15 +550,20 @@ public class Organism extends Bug{
        info.setSize(300, 200);
        info.getContentPane().add(BorderLayout.CENTER, text);
        StringBuffer sb = new StringBuffer();
+       try {
        for(int n = 0; n < BiologySimulation.counts.length; n++)
             sb.append(("Allele "+BiologySimulation.counts[n].name+" Count: "+ BiologySimulation.counts[n].cnt+"\n"));
-
+       }
+       catch(NullPointerException ex) 
+       {}
+       finally {
        text.setEditable(false);
        text.append(sb.toString());
       
        info.setLocation(700,450);       
 
        info.show(); 
+       }
     }
 //first two allele sets are colours dominant (A) = red, recessive (a) = blue
 
@@ -751,8 +762,7 @@ public class Organism extends Bug{
 
            } else {
 
-               turn();
-
+        	   randomTurn();
            }
 
        } else {

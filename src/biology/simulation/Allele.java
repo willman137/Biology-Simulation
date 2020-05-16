@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Allele implements Gene 
 {
-    public int num, id,alleleID;//Id indicates ehether or not the individual gene is a Homozygous dominant(1)/recessive(-1) or Heterozygous(0) 
+    public int num, id,alleleID;//Id indicates whether or not the individual gene is a Homozygous dominant(1)/recessive(-1) or Heterozygous(0) 
     double doub;
     String name,allelename ;
     ArrayList<Allele> genes = new ArrayList();
