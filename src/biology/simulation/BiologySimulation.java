@@ -38,13 +38,17 @@ public class BiologySimulation {
        //SplashScreen.newSplash();
        //Splasher.createAndShowGUI();
        
-       GUI gui = new GUI();         
+	   
+       //GUI gui = new GUI();         
        
-       ArrayList orgList = Organism.newMetricTonOfOrganisms(10);
+       ArrayList<Organism> orgList = Organism.newMetricTonOfOrganisms(10);
        BoundedGrid grid = new BoundedGrid(13, 13);
        world = new ActorWorld();
        world.setGrid(grid);
        int q, e = 0, f = 1;
+       /*iterating over alleles and Giving them out at random. 
+        * The key issue is that the alleles are not seperate Objects, and this is only taking in a single string and breaking that down
+        */
        for(q = 0; q < Organism.testAlleles.length; q+=1)
        {
            int z = q+1;

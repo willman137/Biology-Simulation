@@ -5,7 +5,6 @@
 package biology.simulation;
 
 import biology.simulation.Gene;
-import biology.simulation.Gene;
 import java.util.ArrayList;
 
 /**
